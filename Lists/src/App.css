@@ -1,0 +1,385 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f7fb;
+  color: #1e293b;
+}
+
+/* Main App */
+
+.app {
+  min-height: 100vh;
+  padding: 50px 30px;
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #172554;
+  letter-spacing: -0.8px;
+}
+
+.header p {
+  margin-top: 7px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Student Count */
+
+.student-count {
+  background: #ffffff;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  text-align: center;
+}
+
+.student-count span {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.student-count strong {
+  color: #4f46e5;
+  font-size: 22px;
+}
+
+/* Table Card */
+
+.table-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+/* Table */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+/* Table Header */
+
+thead {
+  background: #f8fafc;
+}
+
+th {
+  padding: 17px 20px;
+  text-align: left;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Table Rows */
+
+td {
+  padding: 17px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #f8faff;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Roll Number */
+
+.roll-number {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* Student Name */
+
+.student-name {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Class */
+
+.class-badge {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Percentage */
+
+.percentage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.percentage > span {
+  font-weight: 600;
+  min-width: 45px;
+}
+
+/* Percentage Bar */
+
+.progress {
+  width: 70px;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #8b5cf6
+  );
+  border-radius: 10px;
+}
+
+/* Grades */
+
+.grade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* A+ */
+
+.grade-Aplus {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* A */
+
+.grade-A {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* B+ */
+
+.grade-Bplus {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* B */
+
+.grade-B {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* Footer */
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* Scrollbar */
+
+.table-wrapper::-webkit-scrollbar {
+  height: 7px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .app {
+    padding: 30px 15px;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .header h1 {
+    font-size: 25px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  .student-count {
+    padding: 10px 15px;
+  }
+}
+/* =========================
+   PAGINATION
+========================= */
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 28px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Previous & Next */
+
+.pagination > button {
+  min-width: 115px;
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination > button:hover:not(:disabled) {
+  background: #f1f5ff;
+  border-color: #a5b4fc;
+  color: #4f46e5;
+  transform: translateY(-1px);
+}
+
+.pagination > button:disabled {
+  color: #cbd5e1;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+/* Page numbers */
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.page-numbers button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-numbers button:hover {
+  background: #f1f5ff;
+  border-color: #a5b4fc;
+  color: #4f46e5;
+}
+
+/* Active page */
+
+.page-numbers button.active-page {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+}
+
+.page-numbers button.active-page:hover {
+  background: #4338ca;
+  color: #ffffff;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .pagination {
+    flex-direction: column;
+    gap: 15px;
+    padding: 18px;
+  }
+
+  .page-numbers {
+    order: -1;
+  }
+
+  .pagination > button {
+    width: 100%;
+  }
+}

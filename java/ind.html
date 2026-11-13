@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="f_name" placeholder="Full name">
+    <input type="number" id="ag" placeholder="Age">
+    <input type="number" id="percentage" placeholder="Percentage">
+    <button onclick="elig()">Click Here</button>
+    <p id="msg"></p>
+
+    <script>
+        function elig()
+        {
+            let age=document.getElementById("ag").value
+            let per=document.getElementById("percentage").value
+            if(age<30 && per>50)
+            {
+            document.getElementById("msg").innerText="You are eligible"
+            }
+        else{
+            document.getElementById("msg").innerHTML="You are not eligible"
+        }
+        }
+    </script>
+</body>
+</html>

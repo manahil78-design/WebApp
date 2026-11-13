@@ -1,0 +1,241 @@
+
+.cine-movie-section {
+  padding: 22px 30px 8px;
+}
+
+.cine-row-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.cine-row-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.cine-row-accent {
+  display: block;
+  width: 4px;
+  height: 23px;
+  border-radius: 10px;
+  background: #ff343d;
+  box-shadow: 0 0 12px #ff343d55;
+}
+
+.cine-row-heading h2,
+.cine-movie-section > h2 {
+  margin: 0;
+  color: #f5f5f9;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+}
+
+.cine-row-count {
+  color: #7d7f8c;
+  font-size: 11px;
+}
+
+.cine-movie-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.cine-movie-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+  background: #111219;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.cine-movie-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff454b70;
+  box-shadow: 0 12px 28px #0005;
+}
+
+.cine-poster-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 2.65;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: #1c1c26;
+  cursor: pointer;
+}
+
+.cine-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cine-movie-card:hover .cine-poster {
+  transform: scale(1.06);
+}
+
+.cine-poster-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(0deg, #08090bdc, transparent 75%);
+  transition: opacity 0.25s ease;
+}
+
+.cine-movie-card:hover .cine-poster-overlay {
+  opacity: 1;
+}
+
+.cine-poster-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff85;
+  border-radius: 50%;
+  background: #15151caa;
+  color: white;
+  font-size: 14px;
+  opacity: 0;
+  transform: translate(-50%, -40%);
+  transition: 0.25s ease;
+}
+
+.cine-movie-card:hover .cine-poster-play {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.cine-poster-quality {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: #08090bd9;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cine-card-info {
+  padding: 12px;
+}
+
+.cine-card-title-line {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.cine-card-title-line h3 {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: #f3f3f7;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cine-card-rating {
+  flex-shrink: 0;
+  color: #ffc04d;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.cine-card-info > p {
+  margin: 7px 0 11px;
+  overflow: hidden;
+  color: #9293a2;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cine-card-info > p span {
+  padding: 0 3px;
+  color: #ff454b;
+}
+
+.cine-card-watch {
+  width: 100%;
+  min-height: 32px;
+  border: 1px solid #ffffff16;
+  border-radius: 7px;
+  background: #1c1d25;
+  color: #e7e7ed;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cine-card-watch:hover {
+  border-color: #ff454b88;
+  background: #34171c;
+  color: white;
+}
+
+.cine-empty-row {
+  padding: 18px 0;
+  color: #a0a1af;
+  font-size: 13px;
+}
+
+@media (max-width: 1200px) {
+  .cine-movie-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .cine-movie-section {
+    padding-right: 23px;
+    padding-left: 23px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cine-movie-section {
+    padding: 21px 14px 6px;
+  }
+
+  .cine-row-heading h2,
+  .cine-movie-section > h2 {
+    font-size: 17px;
+  }
+
+  .cine-movie-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .cine-card-info {
+    padding: 10px;
+  }
+
+  .cine-card-title-line h3 {
+    font-size: 11px;
+  }
+}

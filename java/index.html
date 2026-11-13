@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number"  id="value1" placeholder="First Value">
+    <input type="number"  id="value2" placeholder="Second Value">
+    <button  onclick="sm()" >+</button>
+    <button onclick="sb()" >-</button>
+    <button onclick="mul()">*</button>
+    <button onclick="div()">/</button>
+    <span id="result">Result will be here:</span>
+
+    <script>
+      function sm()
+      {
+      let f_v=parseInt(document.getElementById("value1").value)
+      let s_v=parseInt(document.getElementById("value2").value)
+      let sum=f_v+s_v
+      document.getElementById("result").innerHTML=sum;
+      }
+
+      function sb()
+       {
+      let f_v=parseInt(document.getElementById("value1").value)
+      let s_v=parseInt(document.getElementById("value2").value)
+      let sub=f_v-s_v
+      document.getElementById("result").innerHTML=sub;
+      }
+      
+      function mul()
+       {
+      let f_v=parseInt(document.getElementById("value1").value)
+      let s_v=parseInt(document.getElementById("value2").value)
+      let ml=f_v*s_v
+      document.getElementById("result").innerHTML=ml;
+      }
+
+      function div()
+       {
+      let f_v=parseInt(document.getElementById("value1").value)
+      let s_v=parseInt(document.getElementById("value2").value)
+      let dv=f_v/s_v
+      document.getElementById("result").innerHTML=dv;
+      }
+    </script>
+</body>
+</html>

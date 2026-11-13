@@ -1,0 +1,277 @@
+
+.cine-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 44px 34px;
+  background-color: #191017;
+
+  background-image:
+    linear-gradient(90deg, #090a0e 0%, #090a0edb 33%, #090a0e35 70%, #090a0e20 100%),
+    linear-gradient(0deg, #090a0f 0%, transparent 35%),
+    var(--hero-image);
+
+  background-position: center, center, center 37%;
+  background-size: cover;
+  transition: background-image 0.25s ease;
+}
+
+.cine-hero-shade {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 77% 35%,
+    transparent 0%,
+    #090a0e12 42%,
+    #090a0e8c 100%
+  );
+  pointer-events: none;
+}
+
+.cine-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 550px;
+  padding: 20px 0 34px;
+}
+
+.cine-series-label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 27px;
+  color: #e2e2e9;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.cine-n-mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #e51d2a;
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.cine-hero-kicker {
+  margin: 0 0 10px;
+  color: #ff6369;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.cine-hero h1 {
+  margin: 0;
+  max-width: 550px;
+  color: #fff;
+  font-size: clamp(48px, 5.3vw, 76px);
+  font-weight: 900;
+  line-height: 0.99;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  text-shadow: 0 4px 25px #0008;
+}
+
+.cine-movie-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+  color: #dedee5;
+  font-size: 12px;
+}
+
+.cine-meta-badge {
+  padding: 4px 7px;
+  border: 1px solid #a8a8b5;
+  border-radius: 4px;
+}
+
+.cine-hero-description {
+  max-width: 450px;
+  margin: 18px 0 24px;
+  color: #e1e1e8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.cine-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.cine-watch-button,
+.cine-list-button {
+  min-height: 49px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 24px;
+  border-radius: 11px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.cine-watch-button {
+  border: 1px solid #ff353d;
+  background: linear-gradient(110deg, #ff3d43, #d80c22);
+  color: white;
+  box-shadow: 0 8px 25px #ed1b3028;
+}
+
+.cine-watch-button:hover {
+  transform: translateY(-2px);
+  background: #ff5359;
+}
+
+.cine-watch-button > span {
+  font-size: 15px;
+}
+
+.cine-list-button {
+  border: 1px solid #ffffff20;
+  background: #1c1d24e8;
+  color: white;
+}
+
+.cine-list-button:hover,
+.cine-list-button.saved {
+  background: #34343d;
+}
+
+.cine-list-button > span {
+  font-size: 21px;
+}
+
+.cine-hero-rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 31px;
+  color: #c4c5d0;
+  font-size: 11px;
+}
+
+.cine-hero-rating strong {
+  color: white;
+}
+
+.cine-rating-star {
+  color: #ffbf4a;
+  font-size: 17px;
+}
+
+.cine-rating-divider {
+  color: #777985;
+  padding: 0 3px;
+}
+
+.cine-hero-caption {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d6d4dd;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.cine-caption-line {
+  width: 28px;
+  height: 2px;
+  background: #ff3941;
+}
+
+@media (max-width: 900px) {
+  .cine-hero {
+    min-height: 450px;
+    padding: 34px 25px;
+    background-position: center, center, 62% center;
+  }
+
+  .cine-hero-content {
+    max-width: 490px;
+  }
+
+  .cine-hero h1 {
+    font-size: clamp(43px, 7vw, 65px);
+  }
+}
+
+@media (max-width: 600px) {
+  .cine-hero {
+    min-height: 465px;
+    padding: 30px 18px;
+    align-items: flex-end;
+
+    background-image:
+      linear-gradient(0deg, #090a0f 0%, #090a0fdc 44%, #090a0e42 100%),
+      var(--hero-image);
+
+    background-position: center, 65% top;
+    background-size: cover;
+  }
+
+  .cine-hero-content {
+    padding: 65px 0 30px;
+  }
+
+  .cine-series-label {
+    margin-bottom: 18px;
+  }
+
+  .cine-hero-kicker {
+    font-size: 9px;
+  }
+
+  .cine-hero h1 {
+    font-size: clamp(39px, 10vw, 55px);
+    letter-spacing: -1.5px;
+  }
+
+  .cine-movie-meta {
+    gap: 8px;
+    margin-top: 17px;
+    font-size: 10px;
+  }
+
+  .cine-hero-description {
+    font-size: 12px;
+    margin: 14px 0 19px;
+  }
+
+  .cine-watch-button,
+  .cine-list-button {
+    min-height: 44px;
+    padding: 0 17px;
+    font-size: 12px;
+  }
+
+  .cine-hero-rating {
+    margin-top: 22px;
+    font-size: 10px;
+  }
+
+  .cine-hero-caption {
+    display: none;
+  }
+}

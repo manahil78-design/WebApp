@@ -1,0 +1,245 @@
+.hero {
+  min-height: 590px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #087f9c;
+  background-image:
+    linear-gradient(90deg, rgba(4, 37, 57, 0.76), rgba(5, 64, 84, 0.24) 72%),
+    url("https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=2200&q=90");
+  background-size: cover;
+  background-position: center 54%;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  width: 100%;
+  min-height: 590px;
+  padding: 100px 7% 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 690px;
+  animation: hero-enter 0.8s ease both;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.hero-eyebrow {
+  color: #9ce7e4;
+  margin-bottom: 23px;
+}
+
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6.5vw, 82px);
+  font-weight: 400;
+  letter-spacing: -2.5px;
+  line-height: 1.04;
+  margin: 0;
+}
+
+.hero h1 em {
+  font-weight: 400;
+  color: #9ce7e4;
+}
+
+.hero-description {
+  max-width: 440px;
+  color: #e2f2f5;
+  line-height: 1.8;
+  font-size: 15px;
+  margin: 24px 0 28px;
+}
+
+.search-bar {
+  max-width: 670px;
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: white;
+  border-radius: 50px;
+  box-shadow: 0 15px 45px rgba(0, 27, 43, 0.2);
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 9px;
+  padding-left: 14px;
+}
+
+.search-field > span {
+  color: #008f9c;
+  font-size: 27px;
+}
+
+.search-field input,
+.type-field select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #254858;
+  font: inherit;
+  font-size: 12px;
+}
+
+.search-field input:focus-visible,
+.type-field select:focus-visible {
+  outline: 2px solid #0a9ca8;
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+.search-field input::placeholder {
+  color: #81959e;
+}
+
+.type-field {
+  width: 135px;
+  padding: 0 10px;
+  border-left: 1px solid #e3ebee;
+}
+
+.type-field select {
+  cursor: pointer;
+}
+
+.search-submit {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: #078f9d;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.search-submit:hover {
+  background: #056c7c;
+  transform: rotate(-8deg);
+}
+
+.hero-link {
+  margin-top: 27px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.play-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+}
+
+.hero-link-line {
+  width: 45px;
+  height: 1px;
+  background: #8edbd9;
+}
+
+.hero-caption {
+  position: absolute;
+  bottom: 22px;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 9px;
+  letter-spacing: 1.7px;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero,
+  .hero-overlay {
+    min-height: 600px;
+  }
+
+  .hero-overlay {
+    padding: 70px 5% 65px;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 12vw, 65px);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .search-bar {
+    border-radius: 22px;
+    flex-wrap: wrap;
+    padding: 13px;
+    gap: 13px;
+  }
+
+  .search-field {
+    flex-basis: 100%;
+    padding: 3px 5px;
+  }
+
+  .type-field {
+    flex: 1;
+    width: auto;
+    border-left: none;
+    padding: 8px 5px;
+  }
+
+  .search-submit {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero-caption {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content {
+    animation: none;
+  }
+}

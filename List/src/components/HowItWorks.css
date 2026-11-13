@@ -1,0 +1,94 @@
+
+.how-section {
+  padding: 110px 8%;
+
+  background: #172033;
+  color: white;
+}
+
+.how-heading {
+  text-align: center;
+
+  margin-bottom: 70px;
+}
+
+.how-heading > span {
+  color: #5eead4;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  letter-spacing: 3px;
+}
+
+.how-heading h2 {
+  margin-top: 15px;
+
+  font-size: clamp(35px, 5vw, 55px);
+  line-height: 1.1;
+}
+
+.how-heading strong {
+  color: #5eead4;
+}
+
+.steps {
+  max-width: 1100px;
+
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.step {
+  position: relative;
+
+  padding: 35px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.step-number {
+  margin-bottom: 50px;
+
+  color: #5eead4;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.step h3 {
+  margin-bottom: 12px;
+
+  font-size: 25px;
+}
+
+.step p {
+  color: #94a3b8;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.step-arrow {
+  position: absolute;
+
+  top: 35px;
+  right: 30px;
+
+  color: #5eead4;
+
+  font-size: 22px;
+}
+
+@media (max-width: 800px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
