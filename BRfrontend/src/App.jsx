@@ -1,319 +1,181 @@
 
-import { useState } from "react";
+import React, { useMemo, useState } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import PropertySearch from "./components/PropertySearch";
+import PropertyGrid from "./components/PropertyGrid";
+import Footer from "./components/Footer";
 import "./App.css";
 
-const image = (path, size = "w500") =>
-  `https://image.tmdb.org/t/p/${size}/${path}`;
-
-const movies = [
+const properties = [
   {
     id: 1,
-    title: "Spider-Man: No Way Home",
-    year: 2021,
-    genre: "Marvel",
-    rating: "8.2",
-    poster: image("1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"),
-    backdrop: image("zD5v1E4joAzFvmAEytt7fM3ivyT.jpg", "original"),
-    description:
-      "With his identity revealed, Peter Parker turns to Doctor Strange. But changing reality comes with a price.",
+    title: "Contemporary Luxury Villa",
+    location: "DHA Phase 6, Lahore",
+    price: 48500000,
+    type: "House",
+    purpose: "Buy",
+    beds: 5,
+    baths: 6,
+    area: "1 Kanal",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1100&q=85",
+    tag: "FEATURED",
   },
   {
     id: 2,
-    title: "Avengers: Endgame",
-    year: 2019,
-    genre: "Marvel",
-    rating: "8.4",
-    poster: image("or06FN3Dka5tukK1e9sl16pB3iy.jpg"),
-    description: "The Avengers face their greatest challenge in a battle for the future.",
+    title: "Modern Minimalist Residence",
+    location: "F-7, Islamabad",
+    price: 320000,
+    type: "House",
+    purpose: "Rent",
+    beds: 4,
+    baths: 4,
+    area: "10 Marla",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85",
+    tag: "NEW",
   },
   {
     id: 3,
-    title: "Black Panther",
-    year: 2018,
-    genre: "Marvel",
-    rating: "7.3",
-    poster: image("uxzzxijgPIY7slzFvMotPv8wjKA.jpg"),
-    description: "A new king must protect his nation and discover what it means to lead.",
+    title: "The Grand City Apartment",
+    location: "Clifton, Karachi",
+    price: 28500000,
+    type: "Apartment",
+    purpose: "Buy",
+    beds: 3,
+    baths: 3,
+    area: "2,100 sqft",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=85",
+    tag: "POPULAR",
   },
   {
     id: 4,
-    title: "Doctor Strange",
-    year: 2016,
-    genre: "Marvel",
-    rating: "7.5",
-    poster: image("uGBVj3bEbCoZbDjjl9wTxcygko1.jpg"),
-    description: "A brilliant surgeon discovers a hidden world of mystical possibilities.",
+    title: "Serene Garden House",
+    location: "Bahria Town, Islamabad",
+    price: 195000,
+    type: "House",
+    purpose: "Rent",
+    beds: 4,
+    baths: 3,
+    area: "10 Marla",
+    image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=85",
+    tag: "",
   },
   {
     id: 5,
-    title: "Guardians of the Galaxy",
-    year: 2014,
-    genre: "Marvel",
-    rating: "8.0",
-    poster: image("r7vmZjiyZw9rpJMQJdXpjgiCOk9.jpg"),
-    description: "An unlikely team of heroes takes on an adventure across the galaxy.",
+    title: "Elegant Penthouse Suite",
+    location: "DHA Phase 8, Karachi",
+    price: 62000000,
+    type: "Apartment",
+    purpose: "Buy",
+    beds: 4,
+    baths: 4,
+    area: "3,000 sqft",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85",
+    tag: "LUXURY",
   },
   {
     id: 6,
-    title: "Iron Man",
-    year: 2008,
-    genre: "Marvel",
-    rating: "7.9",
-    poster: image("78lPtwv72eTNqFW9COBYI0dWDJa.jpg"),
-    description: "A genius inventor builds a suit that changes his life forever.",
+    title: "Modern Family Home",
+    location: "DHA Phase 5, Lahore",
+    price: 240000,
+    type: "House",
+    purpose: "Rent",
+    beds: 3,
+    baths: 3,
+    area: "1 Kanal",
+    image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1100&q=85",
+    tag: "NEW",
   },
   {
     id: 7,
-    title: "Spider-Man: Across the Spider-Verse",
-    year: 2023,
-    genre: "Animation",
-    rating: "8.6",
-    poster: image("8Vt6mWEReuy4Of61Lnj5Xj888t2.jpg"),
-    description: "Miles Morales journeys through extraordinary alternate universes.",
+    title: "The Urban Living Apartment",
+    location: "E-11, Islamabad",
+    price: 18500000,
+    type: "Apartment",
+    purpose: "Buy",
+    beds: 2,
+    baths: 2,
+    area: "1,450 sqft",
+    image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1100&q=85",
+    tag: "",
   },
   {
     id: 8,
-    title: "The Batman",
-    year: 2022,
-    genre: "Action",
-    rating: "7.8",
-    poster: image("74xTEgt7R36Fpooo50r9T25onhq.jpg"),
-    description: "A dark detective story set in a city full of secrets.",
+    title: "Peaceful Contemporary Villa",
+    location: "Bahria Town, Lahore",
+    price: 375000,
+    type: "House",
+    purpose: "Rent",
+    beds: 5,
+    baths: 5,
+    area: "1 Kanal",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=85",
+    tag: "FEATURED",
   },
 ];
 
-const categories = ["All", "Marvel", "Animation", "Action"];
-
-export default function App() {
-  const [featured, setFeatured] = useState(movies[0]);
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
-  const [page, setPage] = useState("Home");
-  const [myList, setMyList] = useState([]);
-  const [message, setMessage] = useState("");
-
-  const saved = myList.some((movie) => movie.id === featured.id);
-
-  const filtered = movies.filter((movie) => {
-    const matchesSearch =
-      movie.title.toLowerCase().includes(search.toLowerCase()) ||
-      movie.genre.toLowerCase().includes(search.toLowerCase()) ||
-      String(movie.year).includes(search);
-
-    const matchesCategory =
-      category === "All" || movie.genre === category;
-
-    const matchesPage =
-      page !== "My List" ||
-      myList.some((item) => item.id === movie.id);
-
-    return matchesSearch && matchesCategory && matchesPage;
+function App() {
+  const [filters, setFilters] = useState({
+    location: "",
+    purpose: "Any",
+    type: "Any",
+    budget: "Any",
   });
 
-  function toggleSaved(movie) {
-    if (myList.some((item) => item.id === movie.id)) {
-      setMyList((list) => list.filter((item) => item.id !== movie.id));
-      setMessage("Removed from My List");
-    } else {
-      setMyList((list) => [...list, movie]);
-      setMessage("Added to My List");
-    }
-  }
+  const [favorites, setFavorites] = useState([]);
 
-  function choosePage(nextPage) {
-    setPage(nextPage);
-    setSearch("");
-    setCategory("All");
-    setMessage("");
-  }
+  const filteredProperties = useMemo(() => {
+    return properties.filter((property) => {
+      const locationMatch =
+        property.location.toLowerCase().includes(filters.location.toLowerCase());
 
-  function chooseMovie(movie) {
-    setFeatured(movie);
-    setMessage("");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+      const purposeMatch =
+        filters.purpose === "Any" || property.purpose === filters.purpose;
+
+      const typeMatch =
+        filters.type === "Any" || property.type === filters.type;
+
+      let budgetMatch = true;
+
+      if (filters.budget !== "Any") {
+        const maxBudget = Number(filters.budget);
+        budgetMatch = property.price <= maxBudget;
+      }
+
+      return locationMatch && purposeMatch && typeMatch && budgetMatch;
+    });
+  }, [filters]);
+
+  const toggleFavorite = (id) => {
+    setFavorites((previous) =>
+      previous.includes(id)
+        ? previous.filter((item) => item !== id)
+        : [...previous, id]
+    );
+  };
 
   return (
-    <div className="noir">
-      <header className="topbar">
-        <button className="logo" onClick={() => choosePage("Home")}>
-          NOIR<span>.</span>
-        </button>
+    <div className="homehunt">
+      <Header favoritesCount={favorites.length} />
 
-        <nav>
-          {["Home", "Movies", "My List"].map((item) => (
-            <button
-              key={item}
-              className={page === item ? "nav-item selected" : "nav-item"}
-              onClick={() => choosePage(item)}
-            >
-              {item}
-            </button>
-          ))}
-        </nav>
+      <main>
+        <Hero />
 
-        <input
-          className="search"
-          placeholder="Search movies..."
-          aria-label="Search movies"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
+        <PropertySearch
+          filters={filters}
+          setFilters={setFilters}
         />
-      </header>
 
-      {page === "Home" && !search && (
-        <section className="hero">
-          <img
-            className="hero-image"
-            src={featured.backdrop || featured.poster}
-            alt=""
-            onError={(event) => {
-              event.currentTarget.style.display = "none";
-            }}
-          />
-          <div className="hero-overlay" />
-
-          <div className="hero-content">
-            <p className="eyebrow">THE NOIR FEATURE</p>
-            <p className="hero-label">MARVEL STUDIOS PRESENTS</p>
-            <h1>{featured.title}</h1>
-
-            <div className="metadata">
-              <span className="rating">★ {featured.rating}</span>
-              <span>{featured.year}</span>
-              <span>{featured.genre}</span>
-            </div>
-
-            <p className="description">{featured.description}</p>
-
-            <div className="hero-buttons">
-              <button
-                className="watch-button"
-                onClick={() =>
-                  setMessage("This demo does not have video playback yet.")
-                }
-              >
-                ▶ &nbsp; Watch now
-              </button>
-
-              <button
-                className="list-button"
-                onClick={() => toggleSaved(featured)}
-              >
-                {saved ? "✓ In My List" : "+ My List"}
-              </button>
-            </div>
-          </div>
-
-          <div className="hero-caption">YOUR NEXT MARVEL MOMENT</div>
-        </section>
-      )}
-
-      <main className="content">
-        <div className="heading">
-          <div>
-            <p className="eyebrow">
-              {page === "My List" ? "YOUR COLLECTION" : "HANDPICKED FOR YOU"}
-            </p>
-            <h2>
-              {page === "My List"
-                ? "My List"
-                : search
-                  ? "Search results"
-                  : page === "Movies"
-                    ? "Explore movies"
-                    : "Marvel & More"}
-            </h2>
-          </div>
-          <span className="count">{filtered.length} TITLES</span>
-        </div>
-
-        {page !== "My List" && (
-          <div className="filters">
-            {categories.map((item) => (
-              <button
-                key={item}
-                className={category === item ? "filter active" : "filter"}
-                onClick={() => setCategory(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {message && (
-          <div className="message">
-            {message}
-            <button onClick={() => setMessage("")}>×</button>
-          </div>
-        )}
-
-        {filtered.length ? (
-          <div className="movie-grid">
-            {filtered.map((movie) => (
-              <article className="movie-card" key={movie.id}>
-                <button
-                  className="poster-wrap"
-                  onClick={() => chooseMovie(movie)}
-                  aria-label={`Feature ${movie.title}`}
-                >
-                  <img
-                    className="poster"
-                    src={movie.poster}
-                    alt={movie.title}
-                    loading="lazy"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                      event.currentTarget.parentElement.classList.add(
-                        "poster-missing"
-                      );
-                    }}
-                  />
-                  <span className="poster-fallback">{movie.title}</span>
-                  <span className="play">▶</span>
-                </button>
-
-                <div className="movie-info">
-                  <button
-                    className="movie-title"
-                    onClick={() => chooseMovie(movie)}
-                  >
-                    {movie.title}
-                  </button>
-                  <p>{movie.year} <span>·</span> {movie.genre}</p>
-                </div>
-
-                <button
-                  className="save-button"
-                  onClick={() => toggleSaved(movie)}
-                  aria-label={`Save ${movie.title}`}
-                >
-                  {myList.some((item) => item.id === movie.id) ? "✓" : "+"}
-                </button>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="empty">
-            <h3>Nothing here just yet.</h3>
-            <p>Try another search or add a movie to your list.</p>
-            <button
-              className="list-button"
-              onClick={() => choosePage("Home")}
-            >
-              Explore movies
-            </button>
-          </div>
-        )}
-
-        <footer className="footer">
-          <button className="logo" onClick={() => choosePage("Home")}>
-            NOIR<span>.</span>
-          </button>
-          <p>MADE FOR THE LOVE OF CINEMA.</p>
-        </footer>
+        <PropertyGrid
+          properties={filteredProperties}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />
       </main>
+
+      <Footer />
     </div>
   );
 }
+
+export default App;

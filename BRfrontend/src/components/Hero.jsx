@@ -1,63 +1,42 @@
 
+import React from "react";
 import "./Hero.css";
 
-function Hero({ movie, isSaved, onToggleList, onWatch }) {
+function Hero() {
   return (
-    <section
-      className="cine-hero"
-      style={{ "--hero-image": `url("${movie.image}")` }}
-    >
-      <div className="cine-hero-shade"></div>
+    <section className="hh-hero">
+      <div className="hero-image"></div>
 
-      <div className="cine-hero-content">
-        <div className="cine-series-label">
-          <span className="cine-n-mark">C</span>
-          <span>FEATURED FILM</span>
-        </div>
+      <div className="hero-content">
+        <span className="hero-eyebrow">
+          <span></span> YOUR NEXT CHAPTER STARTS HERE
+        </span>
 
-        <p className="cine-hero-kicker">YOUR NEXT MOVIE NIGHT</p>
+        <h1>
+          Find a place
+          <br />
+          <em>to call home.</em>
+        </h1>
 
-        <h1>{movie.title}</h1>
+        <p>
+          Discover exceptional homes, beautiful spaces and
+          <br className="desktop-break" />
+          places that feel like they were made for you.
+        </p>
 
-        <div className="cine-movie-meta">
-          <span>{movie.year}</span>
-          <span className="cine-meta-badge">16+</span>
-          <span>{movie.genre}</span>
-          <span>{movie.duration}</span>
-          <span className="cine-meta-badge">HD</span>
-        </div>
+        <a href="#properties" className="hero-button">
+          Explore Properties <span>↗</span>
+        </a>
 
-        <p className="cine-hero-description">{movie.description}</p>
-
-        <div className="cine-hero-buttons">
-          <button
-            className="cine-watch-button"
-            onClick={() => onWatch(movie)}
-          >
-            <span>▶</span> Watch Now
-          </button>
-
-          <button
-            className={`cine-list-button ${isSaved ? "saved" : ""}`}
-            onClick={() => onToggleList(movie)}
-          >
-            <span>{isSaved ? "✓" : "+"}</span>
-            {isSaved ? "In My List" : "My List"}
-          </button>
-        </div>
-
-        <div className="cine-hero-rating">
-          <span className="cine-rating-star">★</span>
-          <strong>{movie.rating}</strong>
-          <span>IMDb-style rating</span>
-          <span className="cine-rating-divider">|</span>
-          <span>Editor's Pick</span>
+        <div className="hero-note">
+          <span className="hero-line"></span>
+          DISCOVER. CONNECT. BELONG.
         </div>
       </div>
 
-      <div className="cine-hero-caption">
-        <span className="cine-caption-line"></span>
-        <span>NOW SHOWING ON CINEJOY</span>
+      <div className="hero-bottom-label">
+        <span>01 / 04</span>
+        <span>CURATED HOMES & SPACES</span>
       </div>
     </section>
   );
