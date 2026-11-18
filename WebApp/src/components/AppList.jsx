@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AppList.css";
 
-const API_URL = "http://localhost:3000/api/products";
+const API_URL = "https://webapp-hhcw.onrender.com/api/products";
 
 function AppList({ refreshTrigger }) {
   const [products, setProducts] = useState([]);

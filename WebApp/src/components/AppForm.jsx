@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./AppForm.css";
 
-const API_URL = "http://localhost:3000/api/products";
+const API_URL = "https://webapp-hhcw.onrender.com/api/products";
 
 function AppForm({ onProductAdded }) {
   const [formData, setFormData] = useState({
