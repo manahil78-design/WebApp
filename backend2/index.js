@@ -1,24 +1,42 @@
-// index.js
+
 require('dotenv').config();
+
 const express = require('express');
+const cors = require('cors');
+
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
-const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+
 const app = express();
 
-// Middleware: parse incoming JSON
 app.use(express.json());
 app.use(cors());
-// Connect to MongoDB
-connectDB();
 
-// Routes
+// Home route
 app.get('/', (req, res) => {
-  res.send('Products API is running');
+  res.send('E-commerce API is running successfully!');
 });
+
+// API routes
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/orders', orderRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+const startServer = async () => {
+  try {
+    await connectDB();
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Server startup failed:', error.message);
+    process.exit(1);
+  }
+};
+
+startServer();

@@ -1,4 +1,4 @@
-// routes/productRoutes.js
+
 const express = require('express');
 const router = express.Router();
 
@@ -7,13 +7,19 @@ const {
   getProducts,
   getProductById,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 } = require('../controllers/productController');
 
-router.post('/', createProduct);
+const protectAdmin = require('../middleware/authMiddleware');
+const upload = require('../middleware/upload');
+
+// PUBLIC ROUTES
 router.get('/', getProducts);
 router.get('/:id', getProductById);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+
+// ADMIN ROUTES
+router.post('/', protectAdmin, upload.single('image'), createProduct);
+router.put('/:id', protectAdmin, upload.single('image'), updateProduct);
+router.delete('/:id', protectAdmin, deleteProduct);
 
 module.exports = router;
