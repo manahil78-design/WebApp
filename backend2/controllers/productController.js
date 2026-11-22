@@ -1,17 +1,17 @@
 
-const Product = require('../models/product');
-const cloudinary = require('../config/cloudinary');
+const Product = require("../models/product");
+const cloudinary = require("../config/cloudinary");
 
-// Upload image buffer to Cloudinary
+// Upload one image to Cloudinary
 const uploadToCloudinary = (fileBuffer) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
-      { folder: 'ecommerce-products' },
+      { folder: "ecommerce-products" },
       (error, result) => {
         if (error) {
           reject(error);
         } else {
-          resolve(result);
+          resolve(result.secure_url);
         }
       }
     );
@@ -20,14 +20,33 @@ const uploadToCloudinary = (fileBuffer) => {
   });
 };
 
-// CREATE: POST /api/products
+// CREATE PRODUCT
 const createProduct = async (req, res) => {
   try {
     const productData = { ...req.body };
 
-    if (req.file) {
-      const result = await uploadToCloudinary(req.file.buffer);
-      productData.image = result.secure_url;
+    const uploadedImages = req.files?.images || [];
+    const legacyImage = req.files?.image?.[0];
+
+    if (uploadedImages.length > 0) {
+      if (uploadedImages.length !== 3) {
+        return res.status(400).json({
+          message: "Please upload exactly 3 product images.",
+        });
+      }
+
+      const imageUrls = await Promise.all(
+        uploadedImages.map((file) =>
+          uploadToCloudinary(file.buffer)
+        )
+      );
+
+      productData.images = imageUrls;
+      productData.image = imageUrls[0];
+    } else if (legacyImage) {
+      const imageUrl = await uploadToCloudinary(legacyImage.buffer);
+      productData.image = imageUrl;
+      productData.images = [imageUrl];
     }
 
     const product = await Product.create(productData);
@@ -43,7 +62,7 @@ const createProduct = async (req, res) => {
   }
 };
 
-// READ ALL: GET /api/products
+// GET ALL PRODUCTS
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -56,7 +75,7 @@ const getProducts = async (req, res) => {
   }
 };
 
-// READ ONE: GET /api/products/:id
+// GET ONE PRODUCT
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -75,7 +94,7 @@ const getProductById = async (req, res) => {
   }
 };
 
-// UPDATE: PUT /api/products/:id
+// UPDATE PRODUCT
 const updateProduct = async (req, res) => {
   try {
     const allowedFields = [
@@ -95,10 +114,52 @@ const updateProduct = async (req, res) => {
       }
     });
 
-    // Upload a new image if one was selected
-    if (req.file) {
-      const result = await uploadToCloudinary(req.file.buffer);
-      updates.image = result.secure_url;
+    const uploadedImages = req.files?.images || [];
+    const legacyImage = req.files?.image?.[0];
+
+    if (uploadedImages.length > 0) {
+      if (uploadedImages.length !== 3) {
+        return res.status(400).json({
+          message: "Please upload exactly 3 product images.",
+        });
+      }
+
+      const imageUrls = await Promise.all(
+        uploadedImages.map((file) =>
+          uploadToCloudinary(file.buffer)
+        )
+      );
+
+      updates.images = imageUrls;
+      updates.image = imageUrls[0];
+    } else if (legacyImage) {
+      const imageUrl = await uploadToCloudinary(legacyImage.buffer);
+      updates.image = imageUrl;
+      updates.images = [imageUrl];
+    }
+
+    // Also allow image URLs to be updated directly
+    if (req.body.images !== undefined && uploadedImages.length === 0) {
+      const suppliedImages =
+        typeof req.body.images === "string"
+          ? JSON.parse(req.body.images)
+          : req.body.images;
+
+      if (!Array.isArray(suppliedImages) || suppliedImages.length > 3) {
+        return res.status(400).json({
+          message: "Images must be an array containing up to 3 URLs.",
+        });
+      }
+
+      updates.images = suppliedImages;
+
+      if (suppliedImages.length > 0) {
+        updates.image = suppliedImages[0];
+      }
+    }
+
+    if (req.body.image !== undefined && !legacyImage && uploadedImages.length === 0) {
+      updates.image = req.body.image;
     }
 
     const product = await Product.findByIdAndUpdate(
@@ -127,7 +188,7 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// DELETE: DELETE /api/products/:id
+// DELETE PRODUCT
 const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);

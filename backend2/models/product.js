@@ -33,9 +33,16 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
+    // Main image (kept for compatibility)
     image: {
       type: String,
       default: "",
+    },
+
+    // Three product images
+    images: {
+      type: [String],
+      default: [],
     },
 
     stock: {

@@ -1,5 +1,5 @@
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const {
@@ -8,18 +8,24 @@ const {
   getProductById,
   updateProduct,
   deleteProduct,
-} = require('../controllers/productController');
+} = require("../controllers/productController");
 
-const protectAdmin = require('../middleware/authMiddleware');
-const upload = require('../middleware/upload');
+const protectAdmin = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");
 
 // PUBLIC ROUTES
-router.get('/', getProducts);
-router.get('/:id', getProductById);
+router.get("/", getProducts);
+router.get("/:id", getProductById);
 
 // ADMIN ROUTES
-router.post('/', protectAdmin, upload.single('image'), createProduct);
-router.put('/:id', protectAdmin, upload.single('image'), updateProduct);
-router.delete('/:id', protectAdmin, deleteProduct);
+// Supports both the old single image field and the new three-image field
+const productImageUpload = upload.fields([
+  { name: "image", maxCount: 1 },
+  { name: "images", maxCount: 3 },
+]);
+
+router.post("/", protectAdmin, productImageUpload, createProduct);
+router.put("/:id", protectAdmin, productImageUpload, updateProduct);
+router.delete("/:id", protectAdmin, deleteProduct);
 
 module.exports = router;
