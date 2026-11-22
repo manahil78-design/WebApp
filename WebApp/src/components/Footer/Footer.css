@@ -1,0 +1,122 @@
+
+.nexora-footer {
+  background: #eeede8;
+  color: #191919;
+  padding: 75px 7.5% 25px;
+}
+
+.nexora-footer-main {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1fr 1.2fr;
+  gap: 55px;
+  padding-bottom: 75px;
+}
+
+.nexora-footer-logo {
+  color: #191919;
+  text-decoration: none;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.nexora-footer-logo span {
+  color: #a58f6b;
+}
+
+.nexora-footer-brand > p {
+  max-width: 260px;
+  margin: 18px 0 25px;
+  color: #77736c;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.nexora-footer-email {
+  color: #33312c;
+  text-decoration: none;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.nexora-footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.nexora-footer-column h3 {
+  color: #89847a;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin: 7px 0 10px;
+}
+
+.nexora-footer-column a {
+  color: #55524c;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.nexora-footer-column a:hover,
+.nexora-footer-email:hover {
+  color: #a58f6b;
+}
+
+.nexora-footer-column p {
+  color: #77736c;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 210px;
+}
+
+.nexora-footer-bottom {
+  border-top: 1px solid #d9d6ce;
+  padding-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: #89847a;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.nexora-footer-bottom a {
+  color: #55524c;
+  text-decoration: none;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 850px) {
+  .nexora-footer-main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  .nexora-footer {
+    padding: 60px 7% 25px;
+  }
+
+  .nexora-footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+    padding-bottom: 50px;
+  }
+
+  .nexora-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .nexora-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.8;
+  }
+}

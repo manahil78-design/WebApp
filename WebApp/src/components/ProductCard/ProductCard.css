@@ -1,0 +1,138 @@
+
+.product-card {
+  min-width: 0;
+  overflow: hidden;
+  background: #101a2c;
+  border: 1px solid rgba(164, 190, 230, 0.13);
+  border-radius: 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(89, 157, 255, 0.5);
+}
+
+/* FULL PRODUCT IMAGE AREA */
+.product-card-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.product-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-card-image img {
+  transform: scale(1.04);
+}
+
+.product-card-empty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #64748b;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.product-view {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  padding: 9px 13px;
+  border-radius: 30px;
+  background: rgba(8, 15, 29, 0.88);
+  color: white;
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-view {
+  opacity: 1;
+}
+
+/* PRODUCT INFORMATION */
+.product-card-info {
+  padding: 22px;
+}
+
+.product-category {
+  color: #8eacd4;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.product-card-info h3 {
+  margin: 12px 0;
+  color: #f5f7fc;
+  font-size: 19px;
+}
+
+.product-description {
+  min-height: 60px;
+  color: #aab8cc;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.product-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.product-card-bottom strong {
+  color: white;
+  font-size: 15px;
+}
+
+.product-add-button {
+  padding: 11px 13px;
+  border: 1px solid rgba(112, 165, 255, 0.5);
+  border-radius: 5px;
+  background: transparent;
+  color: #c4d9fa;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.product-add-button:hover {
+  background: #3479ed;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .product-card-info {
+    padding: 16px;
+  }
+
+  .product-card-info h3 {
+    font-size: 16px;
+  }
+
+  .product-card-bottom {
+    flex-wrap: wrap;
+  }
+}
